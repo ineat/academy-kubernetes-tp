@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-webapp
+  template:
+    metadata:
+      labels:
+        app: ingress-webapp
+    spec:
+      containers:
+        - name: hello-world
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

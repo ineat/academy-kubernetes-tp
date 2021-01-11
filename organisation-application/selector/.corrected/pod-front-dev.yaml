@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: organisation-selector-front-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      ...
+  template:
+    metadata:
+      labels:
+        environment: dev
+        component: app
+        tier: front
+    spec:
+      containers:
+        - name: alpine
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 0
+              memory: 0

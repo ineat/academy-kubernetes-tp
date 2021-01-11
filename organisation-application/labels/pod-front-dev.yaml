@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: organisation-labels-front-dev
+spec:
+  containers:
+    - name: alpine
+      image: tutum/hello-world:latest
+      imagePullPolicy: IfNotPresent

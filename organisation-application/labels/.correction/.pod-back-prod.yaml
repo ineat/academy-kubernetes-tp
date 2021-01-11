@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: organisation-labels-back-prod
+  labels:
+    project: formation-kubernetes-labels
+    environment: prod
+    component: app
+    tier: back
+spec:
+  containers:
+    - name: alpine
+      image: tutum/hello-world:latest
+      imagePullPolicy: IfNotPresent

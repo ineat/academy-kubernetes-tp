@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: organisation-selector-front-prod
+  labels:
+    chapter: healthcheck
+    section: requests
+spec:
+  ports:
+    - port: 80
+  selector:
+    environment: prod
+    component: app
+    tier: front
