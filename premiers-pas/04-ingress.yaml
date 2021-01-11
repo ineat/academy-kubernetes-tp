@@ -1,0 +1,9 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: premiers-pas-hello-world
+spec:
+  backend:
+    serviceName: premiers-pas-hello-world
+    servicePort: 80

@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limits-hello-world
+  labels:
+    chapter: resources
+    section: limits
+spec:
+  containers:
+    - name: hello-world
+      image: tutum/hello-world:latest
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          cpu: "10m"
+          memory: "16Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: limits-hello-world
+  labels:
+    chapter: healthcheck
+    section: limits
+spec:
+  ports:
+    - port: 80
+  selector:
+    chapter: resources
+    section: limits

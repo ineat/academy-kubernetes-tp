@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-hostpath
+spec:
+  containers:
+    - name: nginx
+      image: nodevops/nginx-log2fs:1.12-alpine
+      volumeMounts:
+        - name: nginx-log
+          mountPath: /var/log/nginx
+  volumes:
+    - name: nginx-log
+      hostPath:
+        path: /mnt/k8s/volume/hostpath

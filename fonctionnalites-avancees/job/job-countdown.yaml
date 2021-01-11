@@ -1,0 +1,19 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: countdown
+spec:
+  template:
+    metadata:
+      name: countdown
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: countdown
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - sleep infinity

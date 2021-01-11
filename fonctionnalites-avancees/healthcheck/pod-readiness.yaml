@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: readiness-hello-world
+  labels:
+    chapter: healthcheck
+    section: readiness
+spec:
+  containers:
+    - name: hello-world
+      image: tutum/hello-world:latest
+      imagePullPolicy: IfNotPresent
+      command:
+        - /bin/sh
+        - -c
+        - |
+          for i in $(seq 10 -1 1); do echo "Ready in $i"; sleep 1; done
+          php-fpm -d variables_order="EGPCS"
+          tail -F /var/log/nginx/access.log &
+          exec nginx -g "daemon off;"
+      ports:
+        - containerPort: 80
+      readinessProbe:
+        tcpSocket:
+          port: 80
+        initialDelaySeconds: 20
+        periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: readiness-hello-world
+  labels:
+    chapter: healthcheck
+    section: readiness
+spec:
+  ports:
+    - port: 80
+  selector:
+    chapter: healthcheck
+    section: readiness

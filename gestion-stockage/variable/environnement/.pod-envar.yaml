@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-echo
+spec:
+  containers:
+    - name: envar-demo-container
+      image: alpine:latest
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+        - -c
+        - |
+          echo ${USERNAME} ${PASSWORD}
+      env:
+        - name: USERNAME
+          value: "myusername"
+        - name: PASSWORD
+          value: "mypassword"

@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: countdown-timerange
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 20
+  template:
+    metadata:
+      name: countdown-timerange
+    spec:
+      containers:
+        - name: countdown
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - |
+              for i in $(seq 10 -1 1) ; do echo $i; sleep 2; done
+              exit -1
+          restartPolicy: Never

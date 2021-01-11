@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-http-headers
+spec:
+  containers:
+    - name: liveness-http-headers
+      image: k8s.gcr.io/liveness
+      # Image: Le endpoint :8080/health
+      # - renvoie un code retour 200 les 5 premières secondes
+      # - renvoie un code retour 500 ensuite
+      args:
+        - /server
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+          httpHeaders:
+            - name: Custom-Header
+              value: Awesome
+        initialDelaySeconds: 3
+        periodSeconds: 3

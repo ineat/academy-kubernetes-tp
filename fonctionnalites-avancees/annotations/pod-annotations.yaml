@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotations-read
+  labels:
+    zone: us-est-coast
+    cluster: test-cluster1
+    rack: rack-22
+  annotations:
+    build: two
+    builder: john-doe
+spec:
+  containers:
+    - name: client-container
+      image: k8s.gcr.io/busybox
+      command: ["sh", "-c"]
+      args:
+        - env

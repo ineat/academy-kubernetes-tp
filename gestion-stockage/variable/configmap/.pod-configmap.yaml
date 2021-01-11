@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-logretention
+spec:
+  containers:
+    - name: alpine
+      image: alpine:latest
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+        - -c
+        - |
+          echo ${LOG_RETENTION_COUNT} files of ${LOG_FILE_SIZE}
+      env:
+        - name: LOG_RETENTION_COUNT
+          valueFrom:
+            configMapKeyRef:
+              name: logretention
+              key: retention_count
+        - name: LOG_FILE_SIZE
+          valueFrom:
+            configMapKeyRef:
+              name: logretention
+              key: file_size

@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-container-hello-world
+spec:
+  initContainers:
+    - name: waiter
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Starting init-container"
+          apk update
+          apk add curl
+          sleep 5
+          curl -I https://kubernetes.io/
+          sleep 5
+          echo "Ending init-container"
+  containers:
+    - name: hello-world
+      image: tutum/hello-world:latest
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 80

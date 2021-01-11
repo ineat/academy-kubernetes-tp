@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: persistent-volume-static
+spec:
+  containers:
+    - image: nodevops/nginx-log2fs:1.12-alpine
+      name: log2fs
+      ...
+  ...

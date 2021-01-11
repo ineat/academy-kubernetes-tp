@@ -1,0 +1,21 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: countdown-parallelism
+spec:
+  parallelism: 2
+  template:
+    metadata:
+      name: countdown-parallelism
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: countdown
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - |
+              for i in $(seq 10 -1 0) ; do echo $i; sleep 1 ; done

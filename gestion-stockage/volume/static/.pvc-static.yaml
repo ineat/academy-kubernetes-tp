@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc-static
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  volumeName: mypv-static
+  resources:
+    requests:
+      storage: 3Gi

@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-example
+spec:
+  selector:
+    chapter: service
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

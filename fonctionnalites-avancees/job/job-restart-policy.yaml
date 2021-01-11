@@ -1,0 +1,22 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: countdown-restart-policy
+spec:
+  backoffLimit: 10
+  template:
+    metadata:
+      name: countdown-restart-policy
+    spec:
+      restartPolicy: OnFailure           # or Never
+      containers:
+        - name: countdown
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - |
+              for i in $(seq 10 -1 5) ; do echo $i; done
+              exit -1

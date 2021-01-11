@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: type-statefulset-strategy-service
+  labels:
+    app: type-statefulset-strategy-service
+spec:
+  ports:
+    - port: 80
+  clusterIP: None
+  selector:
+    app: type-statefulset-strategy
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: type-statefulset-strategy
+spec:
+  replicas: 2
+  serviceName: "type-statefulset-strategy-service"
+  selector:
+    matchLabels:
+      app: type-statefulset-strategy
+  template:
+    metadata:
+      labels:
+        app: type-statefulset-strategy
+        app2: type-statefulset-strategy2
+    spec:
+      containers:
+        - name: hello-world
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

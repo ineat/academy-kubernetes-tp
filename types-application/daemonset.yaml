@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: type-daemonset
+spec:
+  selector:
+    matchLabels:
+      name: type-daemonset
+  template:
+    metadata:
+      labels:
+        name: type-daemonset
+        name2: type-daemonset2
+    spec:
+      containers:
+        - name: hello-world
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent

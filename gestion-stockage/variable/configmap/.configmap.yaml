@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logretention
+data:
+  retention_count: "10"
+  file_size: "50Mi"

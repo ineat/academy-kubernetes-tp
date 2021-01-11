@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: type-deployment-strategy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: type-deployment-strategy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: type-deployment-strategy
+    spec:
+      containers:
+        - name: hello-world
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

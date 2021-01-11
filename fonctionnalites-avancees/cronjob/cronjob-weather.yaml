@@ -1,0 +1,20 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: weather
+spec:
+  schedule: ...
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: ...
+          containers:
+            - name: weather
+              image: alpine:latest
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -c
+                - curl -sL 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=44f8ffb8a8bb5717f358c6c1660f87e6'
