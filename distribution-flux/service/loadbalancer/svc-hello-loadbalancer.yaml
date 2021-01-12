@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: distribution-service-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: distribution-service-loadbalancer
+  ports:
+    - port: 80

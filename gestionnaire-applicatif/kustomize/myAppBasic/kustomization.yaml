@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+# Les attributs à appliquer à l'ensemble des ressources
+# Liste exhaustive : https://kubectl.docs.kubernetes.io/references/kustomize/
+
+
+# Les ressources visées par le templating
+resources:
+  - service.yaml
+  - deployment.yaml

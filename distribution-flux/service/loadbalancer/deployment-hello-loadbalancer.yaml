@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distribution-service-loadbalancer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distribution-service-loadbalancer
+  template:
+    metadata:
+      labels:
+        app: distribution-service-loadbalancer
+    spec:
+      containers:
+        - name: hello-world
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

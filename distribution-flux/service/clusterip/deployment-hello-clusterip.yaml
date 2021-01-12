@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distribution-service-clusterip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distribution-service-clusterip
+  template:
+    metadata:
+      labels:
+        app: distribution-service-clusterip
+    spec:
+      containers:
+        - name: hello-world
+          image: tutum/hello-world:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

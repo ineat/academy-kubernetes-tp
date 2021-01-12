@@ -1,0 +1,9 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingresscontroller-webapp
+spec:
+  backend:
+    serviceName: ingresscontroller-webapp
+    servicePort: 80

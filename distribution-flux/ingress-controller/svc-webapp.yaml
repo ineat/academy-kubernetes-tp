@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingresscontroller-webapp
+spec:
+  selector:
+    app: ingresscontroller-webapp
+  ports:
+    - port: 80

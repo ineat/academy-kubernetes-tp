@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ingress-webapp
+  name: distribution-service-nodeport
 spec:
-  selector:
-    app: ingress-webapp
   type: NodePort
+  selector:
+    app: distribution-service-nodeport
   ports:
     - port: 80
