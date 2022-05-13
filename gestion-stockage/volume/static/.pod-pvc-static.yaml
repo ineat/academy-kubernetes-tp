@@ -12,5 +12,5 @@ spec:
           mountPath: /var/log/nginx
   volumes:
     - name: mypv
-      hostPath:
-        path: /mnt/k8s/pv/hostpath
+      persistentVolumeClaim:
+        claimName: mypvc-static

@@ -10,5 +10,5 @@ spec:
   capacity:
     storage: 5Gi
   hostPath:
-    type: Directory
+    type: DirectoryOrCreate
     path: /mnt/k8s/pv/hostpath

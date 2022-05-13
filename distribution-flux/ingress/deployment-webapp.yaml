@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ingresscontroller-webapp
+  name: ingress-webapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ingresscontroller-webapp
+      app: ingress-webapp
   template:
     metadata:
       labels:
-        app: ingresscontroller-webapp
+        app: ingress-webapp
     spec:
       containers:
         - name: hello-world

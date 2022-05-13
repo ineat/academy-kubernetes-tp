@@ -1,9 +1,11 @@
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-webapp
 spec:
-  backend:
-    serviceName: ingress-webapp
-    servicePort: 80
+  defaultBackend:
+    service:
+      name: ingress-webapp
+      port:
+        number: 80
