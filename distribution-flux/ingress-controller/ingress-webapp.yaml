@@ -4,6 +4,9 @@ kind: Ingress
 metadata:
   name: ingresscontroller-webapp
 spec:
-  backend:
-    serviceName: ingresscontroller-webapp
-    servicePort: 80
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: ingresscontroller-webapp
+      port:
+        number: 80

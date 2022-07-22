@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: premiers-pas-hello-world
 spec:
-  backend:
-    serviceName: premiers-pas-hello-world
-    servicePort: 80
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: premiers-pas-hello-world
+      port: 80

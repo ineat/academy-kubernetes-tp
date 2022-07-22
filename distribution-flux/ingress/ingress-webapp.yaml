@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: ingress-webapp
 spec:
+  ingressClassName: nginx
   defaultBackend:
     service:
       name: ingress-webapp
