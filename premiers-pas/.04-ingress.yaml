@@ -1,0 +1,12 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: premiers-pas-hello-world
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: premiers-pas-hello-world
+      port:
+        number: 80
