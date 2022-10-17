@@ -5,8 +5,14 @@ metadata:
   name: ingress-webapp
 spec:
   ingressClassName: nginx
-  defaultBackend:
-    service:
-      name: ingress-webapp
-      port:
-        number: 80
+  rules:
+  - host: "ingress.webapp"
+    http:
+      paths:
+      - path: /myname
+        pathType: Prefix
+        backend:
+          service:
+            name: ingress-webapp
+            port:
+              number: 80
