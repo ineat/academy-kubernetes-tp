@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: liveness-http
-      image: k8s.gcr.io/liveness
+      image: registry.k8s.io/liveness
       imagePullPolicy: IfNotPresent
       args:
         - /server
